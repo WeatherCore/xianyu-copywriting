@@ -1,0 +1,104 @@
+《LangChain1.0框架基础入门实战笔记》
+｜LLM应用开发 RAG智能体 流式输出 结构化解析 多模型接入 可复现
+
+个人AI大模型应用开发/LangChain学习**亲手精整全套笔记**，从「框架底层认知」到「核心组件实操」再到「对话机器人项目落地」，完整覆盖LangChain1.0架构、模块化管理、多模型对接、高级特性、实战项目，全程带**逐行代码注解、原理拆解、环境配置、避坑指南**，本地/虚拟机1:1可复现，课程作业/实验报告/项目开发直接套用，AI应用开发入门必珍藏干货
+完整版干货满满，理论+代码+实战+调试全覆盖，新手零门槛快速上手
+
+笔记的硬核精华兼实战能用的硬技能：
+1.【前置必备基础・LangChain1.0框架认知】
+- LangChain核心定位：构建LLM应用的标准化框架，连接大模型、外部工具与复杂数据源
+- 1.0版本核心改进：Agent稳定化、结构化输出、可观测性、生产级部署能力
+- 核心价值：10行代码实现AI应用，自带状态持久化、并发控制、人工干预企业级能力
+- 架构设计核心：统一智能体抽象+标准化内容表示+可插拔治理中间件
+- 场景选型指南：简单聊天/工具调用/复杂工作流的精准方案区分
+
+2.【LangChain生态全景・六大核心层级】
+- 模型层Models：统一抽象20+厂商模型，invoke/stream/batch标准化调用
+- 工具层Tools：100+内置工具、@tool自定义装饰器、场景化Toolkit工具包
+- 记忆层Memory：短期对话历史、长期向量库存储、全局State状态管理
+- Agent层Agents：create_agent核心API、LangGraph运行时、HITL中间件管控
+- 工作流层Workflows：线性Chain、图结构LangGraph、条件分支/循环编排
+- 调试监控层Debugging：LangSmith全链路追踪、本地verbose日志、效果评估工具
+
+3.【底层运行架构・核心组件吃透】
+- 三层运行架构：应用层→LangGraph编排层→LCEL运行时层
+- LCEL核心：Runnable统一接口、|管道运算符、无状态函数式流水线
+- LangGraph核心：状态管理、循环控制、持久化Checkpoints
+- Runnable统一抽象：模型/提示词/工具/解析器全组件标准化调用
+- 核心执行方法：invoke/stream/batch/astream_events全场景覆盖
+
+4.【模块化管理・五大核心依赖包】
+- langchain-core：核心抽象、LCEL语法、基础组件，无第三方依赖轻量基石
+- langchain主包：Agents/Chains高阶逻辑，快速上手开箱即用核心入口
+- langchain-community：社区第三方集成，向量库/文档加载器/小众模型适配
+- langchain-openai/deepseek：厂商专属集成，官方更新、功能最全、生产推荐
+- langchain-classic：旧版兼容包，平滑迁移0.x版本代码到1.0
+
+5.【大模型接口实战・多厂商一键接入】
+- LLM与ChatModel区分：纯文本生成vs对话模型，适用场景精准匹配
+- DeepSeek模型接入：API密钥配置、参数调优、调用实战全流程
+- 阿里云通义千问：DashScope对接、ChatTongyi初始化实操
+- OpenAI系列：GPT-4o-mini调用、参数配置、密钥环境管理
+- Ollama本地模型：deepseek-r1私有化部署、本地调用实战
+- Vllm本地服务：兼容OpenAI协议、高性能推理配置
+- 统一初始化：init_chat_model一行切换模型，业务代码零改动
+
+6.【核心组件实操・提示词与消息管理】
+- 消息列表messages：system/user/assistant/tool四大角色详解
+- 消息执行优先级：system→developer→user→assistant→tool执行顺序
+- PromptTemplate：变量化模板、partial固定变量、动态格式化实战
+- ChatPromptTemplate：多角色消息模板、Few-shot示例快速集成
+- LangChain Hub：在线提示词模板库、rag-prompt官方模板一键拉取
+- 提示词工程：系统指令预设、用户问题格式化、输出规范管控
+
+7.【标准化内容块・多模态统一处理】
+- Content Blocks标准化：text/tool_call/image/audio/video统一格式
+- Base64二进制传输：图片/音频转文本，解决JSON兼容传输问题
+- 多模态输入：文本+图片组合请求、URL/Base64双模式支持
+- 输出解析：content_blocks结构化提取、推理过程+文本内容分离
+- 跨厂商兼容：彻底解决换模型就要重写解析代码的痛点
+
+8.【高级执行特性・批量/流式/并发管控】
+- 批处理batch：并行请求处理、批量问答、文档摘要高效生成
+- 异步批处理abatch：max_concurrency并发控制、大幅提升执行效率
+- 流式传输stream：逐字输出打字机效果、前端实时展示适配
+- 语义事件astream_events：全链路监听、调试/监控/UI渲染全场景
+- 重试机制with_retry：指数退避+随机抖动，解决API限流报错
+- 速率限制InMemoryRateLimiter：请求频率管控、避免接口封禁
+
+9.【结构化输出・JSON/Pydantic解析】
+- with_structured_output：Pydantic模型定义、强制格式规范输出
+- JsonOutputParser：纯JSON解析、提示词规范、异常错误处理
+- 常用解析器：Str/Enum/Boolean/List多类型数据解析适配
+- 结构化输出实战：天气信息提取、人物信息格式化、数据抽取
+- Agent智能体集成：结构化输出+自动校验、拦截非法数据
+- 避坑指南：temperature=0、必带json关键词、提供格式示例
+
+10.【实战项目落地・对话机器人+Gradio可视化界面】
+- 多轮对话机器人：消息历史管理、系统提示词设定、流式输出实现
+- 对话上下文控制：保留最近50轮对话、避免超长内容溢出
+- Gradio界面搭建：可视化聊天界面、样式美化、端口配置部署
+- 完整依赖安装：gradio/模型包/核心组件一键安装清单
+- 全流程代码复刻：从模型初始化到界面启动，复制即可运行
+- 项目扩展方案：对接向量库、接入外部工具、升级智能Agent
+
+11.【生产级优化・避坑与最佳实践】
+- 环境配置规范：Python3.10+、依赖版本对齐、.env密钥安全管理
+- 模型选型方案：云API vs本地模型、不同场景精准适配
+- 并发优化技巧：I/O密集型vsCPU密集型、并发数合理设置
+- 监控排障方法：LangSmith全链路追踪、日志查看、报错解决方案
+- 生产部署规范：密钥脱敏、资源管控、版本迭代、兼容升级
+
+重要声明！！！本个人笔记仅用于AI编程学习、大模型应用开发、课程实验、技术研究交流，严禁用于商业盗版、代码倒卖、违规AI应用开发！笔记为个人学习整理，仅用于技术提升与学习交流。
+
+适合群体：
+- 计算机/AI专业学生：LangChain课程作业、实验报告、大模型作业直接套用
+- AI应用开发小白：不懂LLM框架、不会对接大模型、零基础入门Agent开发
+- 后端开发新手：想快速上手AI应用、对接大模型、搭建智能对话系统
+- 想系统学习LangChain1.0、掌握RAG/Agent、入门大模型应用开发的同学
+
+关键词：#LangChain #LangChain1.0 #大模型开发 #AI应用 #LLM #RAG #智能Agent #流式输出 #结构化输出 #Gradio #对话机器人 #DeepSeek #通义千问 #OpenAI #AI学习笔记 #编程笔记 #电子资料 #大学学习
+
+拍下后发电子版 PDF笔记，不是实物哦～秒发，无延迟直接获取！
+
+当前文件内容过长，豆包只阅读了前 61%。

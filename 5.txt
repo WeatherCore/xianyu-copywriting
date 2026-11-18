@@ -1,0 +1,86 @@
+《韩顺平-Maven 全套实战笔记》
+｜Java项目构建 Jar包管理 从零精通Maven 工程化必备
+个人Java后端开发/Maven工程化学习亲手整理的全套笔记，基于**韩顺平老师经典Maven教程**逐字梳理，从「传统项目导包崩溃」到「Maven一键管理」，吃透项目构建、依赖管理、生命周期全流程，新手零门槛入门，工程化开发必备
+完整多页干货，传统项目对比+Maven安装+实操+原理+依赖+生命周期全覆盖
+
+笔记的硬核精华兼实战能用的硬技能：
+1.【前置痛点分析・引出Maven核心价值】
+- 传统Java项目痛点：手动导Jar包、版本冲突、打包困难、多模块依赖混乱
+- 传统项目实操演示：创建Java项目、编写sum方法、Junit测试、手动导入MySQL驱动
+- Maven核心价值：自动化Jar包管理、一键编译测试打包、解决版本冲突、标准化项目结构
+- 核心定位：Java项目构建与依赖管理神器，后端工程化开发基础工具
+
+2.【Maven快速入门・从零搭建Java项目】
+- Maven项目创建：IDEA创建Maven项目、GroupId/ArtifactId/Version坐标配置
+- 标准项目结构：src/main/java主代码、src/test/java测试代码、resources资源目录
+- 核心配置文件：pom.xml全解读，模型版本、项目坐标、依赖配置根节点
+- 快速实战：编写Hello类、Junit测试、pom.xml引入Junit依赖、运行测试验证
+
+3.【Maven安装与环境配置・Windows全流程】
+- 两种安装方式：IDEA自带Maven、手动下载安装Maven 3.6.3
+- 环境变量配置：MAVEN_HOME配置、Path路径添加、验证安装（mvn -v）
+- JDK依赖要求：JDK1.8及以上版本配置、环境变量检查
+- 目录结构解读：bin指令、boot类加载器、conf配置、lib依赖库
+
+4.【Maven核心原理・仓库+坐标+工作流程】
+- 三大仓库体系：中央仓库、本地仓库、私服仓库的作用与关系
+- 坐标核心机制：GroupId/ArtifactId/Version唯一定位Jar包，精准依赖引入
+- 工作流程图解：pom.xml配置→远程仓库下载→本地仓库缓存→项目引用
+- 插件机制：生命周期对应插件，自动完成编译/打包/安装等操作
+
+5.【IDEA集成Maven・自定义配置优化】
+- IDEA切换自有Maven：指定Maven目录、用户配置文件、本地仓库路径
+- 本地仓库自定义：修改settings.xml配置本地仓库路径，解决C盘占用
+- 阿里云镜像配置：提升Jar包下载速度，mirrors标签配置、镜像地址填写
+- 全局/用户配置区分：conf/settings.xml全局配置、.m2/settings.xml用户配置优先级
+
+6.【Maven依赖管理・核心知识点全吃透】
+- 依赖配置：dependencies节点、dependency子节点、Jar包坐标引入
+- 依赖传递：直接依赖与间接依赖原理、多层依赖传递机制
+- 依赖冲突解决：路径优先、声明优先、特殊优先三大原则实战
+- 可选依赖：optional标签隐藏依赖，禁止外部传递使用
+- 排除依赖：exclusions标签主动断开依赖，无需指定版本
+- 依赖范围：scope标签（compile/test/provided）作用域、使用场景
+
+7.【手动创建Maven项目・理解底层机制】
+- 手动搭建项目结构：严格遵循Maven标准目录，创建src/main/test层级
+- 手写pom.xml配置：项目坐标、依赖引入、编码格式设置
+- 命令行实操：mvn compile编译、mvn test测试、mvn package打包、mvn install安装、mvn clean清理
+- target目录解读：编译生成class、测试报告、打包Jar文件生成机制
+
+8.【Maven Web工程・IDEA创建与Tomcat部署】
+- Maven Web项目创建：archetype-webapp模板选择、项目坐标配置
+- Web项目结构：webapp/WEB-INF、web.xml、index.jsp核心目录
+- pom.xml打包方式：war包配置、插件管理、编译版本设置
+- Tomcat服务器配置：本地Tomcat集成、热部署模式、项目部署运行
+- 实战演示：Hello World页面访问、Web项目启动验证
+
+9.【Maven构建生命周期・三大周期全解析】
+- Clean生命周期：pre-clean→clean→post-clean，清理历史构建文件
+- Default生命周期：核心流程compile→test→package→install→deploy，完整项目构建
+- Site生命周期：pre-site→site→site-deploy，生成项目报告与站点
+- 生命周期执行规则：按阶段顺序执行，指定阶段自动执行前置流程
+
+10.【Maven插件实战・自定义功能扩展】
+- 核心插件：clean、compiler、package、install、deploy默认插件功能
+- 自定义插件：maven-source-plugin配置，生成主程序/测试程序源码Jar
+- 插件绑定生命周期：指定phase阶段执行插件、goals目标配置
+- 插件实操：打包同时生成源码包、验证插件执行效果
+
+11.【Maven实战避坑・开发常用技巧】
+- Jar包下载加速：阿里云镜像配置、本地仓库清理
+- 依赖冲突解决：优先原则应用、排除依赖实战
+- 项目构建失败：环境变量检查、配置文件纠错、仓库权限修复
+- 多模块项目：依赖传递、模块化开发基础逻辑
+
+重要声明！！！本个人笔记仅用于Java编程学习、Maven工程化自学、课程作业参考、技术研究交流，严禁用于商业盗版、课程倒卖、违规资料传播！笔记为个人学习整理，仅用于学习提升使用。
+
+适合群体：
+- Java专业学生：课程作业、实验报告、Maven考试知识点直接套用
+- Java后端新手：不会Jar包管理、项目打包、IDEA Maven配置零基础入门
+- 后端开发小白：被Jar包版本冲突、项目构建失败折磨，想系统学Maven
+- 想掌握Java工程化、夯实项目构建基础、入门后端开发的同学
+
+关键词：#Maven #韩顺平Maven #Java开发 #项目构建 #Jar包管理 #pom.xml #依赖管理 #IDEA配置 #Java工程化 #后端开发 #学生党笔记 #学习笔记 #Java笔记 #编程学习 #电子资料
+
+拍下后发电子版 PDF 笔记，不是实物哦～秒发，无延迟直接获取！
