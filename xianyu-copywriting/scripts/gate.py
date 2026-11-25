@@ -18,6 +18,19 @@ import sys
 import pathlib
 import statistics
 
+# Windows 控制台与重定向输出默认走 GBK(cp936)，✓✗⚠ 不在该编码里，直接 print 会
+# UnicodeEncodeError 崩掉。按输出流实际编码挑符号，编不出来就退化成 ASCII。
+def _symbols():
+    enc = getattr(sys.stdout, "encoding", None) or "utf-8"
+    try:
+        "\u2713\u2717\u26a0".encode(enc)
+        return "\u2713", "\u2717", "\u26a0"
+    except (UnicodeEncodeError, LookupError):
+        return "[OK]", "[X]", "[!]"
+
+
+CHECK, CROSS, WARN = _symbols()
+
 # 硬信号：五案例里是 0，出现就是走偏
 HARD_ZERO = {
     "method_calls": "方法签名串（正文里写 xxx() 调用）",
@@ -100,7 +113,7 @@ def report(path):
     p = parse(path)
     allb = [b for g in p["groups"] for b in g]
     if not allb:
-        print("✗ 没解析到模块子弹，先检查骨架是否完整")
+        print(f"{CROSS} 没解析到模块子弹，先检查骨架是否完整")
         return False
 
     L = [n(b) for b in allb]
@@ -125,7 +138,7 @@ def report(path):
 
     print(f"文件：{pathlib.Path(path).name}")
     print(f"  骨架：", " ".join(
-        f"{'✓' if ok else '✗'}{name}" for name, ok in [
+        f"{CHECK if ok else CROSS}{name}" for name, ok in [
             ("标题", p["has_title"]), ("副标题", p["has_sub"]), ("首段", p["has_intro"]),
             ("模块区", bool(p["groups"])), ("声明", p["has_decl"]), ("适合群体", p["has_fit"]),
             ("关键词", p["has_kw"]), ("交付行", p["has_deliver"]),
@@ -154,21 +167,21 @@ def report(path):
             ref_notes.append(f"{label}：{got}（五案例落在 {lo}–{hi}，若 PDF 章节厚薄不同可忽略）")
 
     if hard_fail:
-        print("\n  ✗ 硬信号出带，按 anti-patterns.md 逐条改：")
+        print(f"\n  {CROSS} 硬信号出带，按 anti-patterns.md 逐条改：")
         for x in hard_fail:
             print(f"    · {x}")
     else:
-        print("\n  ✓ 硬信号全部正常")
+        print(f"\n  {CHECK} 硬信号全部正常")
 
     if ref_notes:
-        print("\n  ⚠ 体量参考（不强制）：")
+        print(f"\n  {WARN} 体量参考（不强制）：")
         for x in ref_notes:
             print(f"    · {x}")
 
     skeleton_ok = all([p["has_title"], p["has_sub"], p["has_intro"], p["has_decl"],
                        p["has_fit"], p["has_kw"], p["has_deliver"], bool(p["groups"])])
     if not skeleton_ok:
-        print("\n  ✗ 骨架有缺段，先补齐再谈密度")
+        print(f"\n  {CROSS} 骨架有缺段，先补齐再谈密度")
         return False
     return not hard_fail
 
